@@ -1,11 +1,21 @@
-Fashion Categorizer Deep Neural Network
+L-Layer Deep Neural Network From Scratch (Numpy-Only)
 =======================================
 
-This project is a custom implementation of a Deep Neural Network built from scratch using NumPy. It was created to apply and deepen the understanding of concepts learned in Coursera's *Neural Networks and Deep Learning* course.
+This project is A flexible, vectorized Deep Neural Network framework built from scratch using only Python and NumPy. This project implements a fully connected neural network to classify images from the **Fashion MNIST** dataset, achieving **~87.45% accuracy** without the use of deep learning frameworks like TensorFlow or PyTorch. 
+
+It was created to apply and deepen the understanding of concepts learned in Coursera's *Neural Networks and Deep Learning* course.
 
 The model classifies images from the Fashion MNIST dataset into one of 10 categories (e.g., T-shirt, Trouser, Pullover, etc.) and achieves a **Test Accuracy of 87.45%**.
 
-Dataset
+### Key Features
+* **Dynamic Architecture:** Supports any number of layers and nodes (e.g., `[784, 128, 64, 10]`).
+* **Vectorized Implementation:** Replaces explicit `for` loops with linear algebra (matrix multiplication) for high-performance batch processing.
+* **Modular Design:** Separation of concerns between the Engine (`neural_network.py`) and the Application (`main.py`).
+* **Advanced Initialization:** Implements **He Initialization** to prevent vanishing/exploding gradients in deep ReLU networks.
+* **Stable Math:** Includes numerical stability fixes for Softmax and Cross-Entropy loss.
+
+
+📊 Dataset
 -------
 
 The project uses the **Fashion MNIST** dataset.
@@ -14,7 +24,7 @@ The project uses the **Fashion MNIST** dataset.
 
 -   **Content:** 60,000 training images and 10,000 test images. Each image is a 28x28 grayscale picture of a clothing item.
 
-Project Structure
+📂 Project Structure
 -----------------
 
 Plaintext
@@ -53,7 +63,7 @@ pip install numpy pandas matplotlib jupyter
 
 ```
 
-Setup & Installation
+💻 Setup & Installation
 --------------------
 
 1.  **Clone the repository:**
@@ -146,7 +156,7 @@ The implementation uses a fully connected Deep Neural Network with the following
 
 -   Epochs: 2000
 
-Results
+📊 Results
 -------
 
 -   **Test Accuracy:** 87.45%
