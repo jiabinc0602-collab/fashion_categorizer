@@ -8,11 +8,11 @@ It was created to apply and deepen the understanding of concepts learned in Cour
 The model classifies images from the Fashion MNIST dataset into one of 10 categories (e.g., T-shirt, Trouser, Pullover, etc.) and achieves a **Test Accuracy of 87.45%**.
 
 ### Key Features
-* **Dynamic Architecture:** Supports any number of layers and nodes (e.g., `[784, 128, 64, 10]`).
-* **Vectorized Implementation:** Replaces explicit `for` loops with linear algebra (matrix multiplication) for high-performance batch processing.
+* **Matrix Vectorization:** Eliminated Python-level loops, utilizing BLAS-optimized NumPy broadcasting to process 60,000 images in parallel.
+* **Numerical Stability:** Implemented a log-sum-exp stabilization trick in the Cross-Entropy loss function to prevent NaN explosion during training.
 * **Modular Design:** Separation of concerns between the Engine (`neural_network.py`) and the Application (`main.py`).
-* **Advanced Initialization:** Implements **He Initialization** to prevent vanishing/exploding gradients in deep ReLU networks.
-* **Stable Math:** Includes numerical stability fixes for Softmax and Cross-Entropy loss.
+* **He-Et-Al Initialization:** Integrated variance-scaling initialization to maintain gradient magnitudes across deep $L$-layer ReLU networks.
+* **Modular Architecture:** Decoupled the compute engine (DeepNeuralNetwork) from the data pipeline, allowing hot-swappable architectures [784, 128, 64, 10].
 
 
 📊 Dataset
@@ -23,6 +23,23 @@ The project uses the **Fashion MNIST** dataset.
 -   **Source:** [Kaggle - Fashion MNIST](https://www.kaggle.com/datasets/zalando-research/fashionmnist)
 
 -   **Content:** 60,000 training images and 10,000 test images. Each image is a 28x28 grayscale picture of a clothing item.
+
+🧮 Math
+------
+**The Calculus:**
+The framework computes gradients via Backpropagation (for the L-th layer):
+
+<div align="center">
+
+$$
+\begin{aligned}
+dZ^{[L]} &= A^{[L]} - Y \\\\
+dW^{[L]} &= \frac{1}{m} dZ^{[L]} A^{[L-1]T} \\\\
+db^{[L]} &= \frac{1}{m} \sum dZ^{[L]}
+\end{aligned}
+$$
+
+</div>
 
 📂 Project Structure
 -----------------
