@@ -44,8 +44,6 @@ $$
 📂 Project Structure
 -----------------
 
-Plaintext
-
 ```
 fashion_categorizer/
 ├── data/                   # Directory for dataset files (not included in repo)
