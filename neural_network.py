@@ -106,4 +106,9 @@ class DeepNeuralNetwork:
             self.params["W" + str(l+1)] = self.params["W" + str(l+1)] - learning_rate * grads["dW" + str(l+1)]
             self.params["b" + str(l+1)] = self.params["b" + str(l+1)] - learning_rate * grads["db" + str(l+1)]
 
+    def predict(self, X):
+        AL, _ = self.forward_propagation(X)
 
+        predictions = np.argmax(AL, axis = 0)
+
+        return predictions
